@@ -39,4 +39,26 @@ describe Board do
       expect(board[3]).to eq('X')
     end
   end
+
+  context '#lines' do
+    it 'returns all the lines for a given board' do
+      board[0] = 'X'
+      board[3] = 'X'
+      board[4] = 'O'
+      expect(board.lines).to eq(
+        [
+          {0 => 'X', 1 => nil, 2 => nil},
+          {3 => 'X', 4 => 'O', 5 => nil},
+          {6 => nil, 7 => nil, 8 => nil},
+
+          {0 => 'X', 3 => 'X', 6 => nil},
+          {1 => nil, 4 => 'O', 7 => nil},
+          {2 => nil, 5 => nil, 8 => nil},
+
+          {0 => 'X', 4 => 'O', 8 => nil},
+          {2 => nil, 4 => 'O', 6 => nil}
+        ]
+      )
+    end
+  end
 end
