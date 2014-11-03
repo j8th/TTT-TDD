@@ -17,6 +17,14 @@ class Board
     board.size >= BOARD_SIZE
   end
 
+  def []=(spot, value)
+    board[spot] = value
+  end
+
+  def [](spot)
+    return board[spot]
+  end
+
   private
   attr_accessor :board
 end

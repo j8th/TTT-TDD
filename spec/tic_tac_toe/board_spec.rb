@@ -25,4 +25,18 @@ describe Board do
       expect(board.full?).to eq(true)
     end
   end
+
+  context '#[]' do
+    it 'Gets the value of the given spot' do
+      board.push('X')
+      expect(board[0]).to eq('X')
+    end
+  end
+
+  context '#[]=' do
+    it 'Sets the value of the spot we give it.' do
+      board[3] = 'X'
+      expect(board[3]).to eq('X')
+    end
+  end
 end
