@@ -2,18 +2,16 @@ require 'tic_tac_toe/game'
 
 describe Game do
   let(:board) { Board.new }
-  let(:game)  { Game.new(board: board) }
+  let(:game)  { Game.new(board) }
 
   context '#game_over?' do
     it 'returns false for a game with a new board' do
-      game  = Game.new(board: board)
       expect(game.game_over?).to eq(false)
     end
   end
 
   context '#winner' do
     it 'returns nil when there is no winner' do
-      game  = Game.new(board: board)
       expect(game.winner).to be_nil
     end
 
@@ -37,4 +35,6 @@ describe Game do
       end
     end
   end
+
+
 end
