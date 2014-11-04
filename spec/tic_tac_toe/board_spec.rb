@@ -28,7 +28,7 @@ describe Board do
     end
 
     it 'returns false when the board is not empty' do
-      board.place('something', 0)
+      board.place(:something, 0)
       expect(board.empty?).to eq(false)
     end
   end

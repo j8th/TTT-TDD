@@ -5,4 +5,8 @@ class Game
   def game_over?
     false
   end
+
+  def winner
+    nil
+  end
 end
