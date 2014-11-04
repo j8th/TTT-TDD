@@ -13,12 +13,12 @@ describe 'AI' do
   end
 
   context '#move' do
-    it 'Given a board instance, it makes a move on the board.' do
+    it 'makes a move on a board.' do
       ai.move(board)
       expect(board.empty?).to eq(false)
     end
 
-    xit 'Given a board instance, it blocks a win for the opposing player.' do
+    xit 'blocks a win for the opposing player.' do
       board.place(:O, 0)
       board.place(:O, 1)
       ai.move(board)
