@@ -4,13 +4,31 @@ require 'tic_tac_toe/board'
 describe Board do
   let(:board) { Board.new }
 
+  context '#place' do
+    it 'places the mark at position 0' do
+      board.place(:something, 0)
+      expect(board[0]).to eq(:something)
+    end
+
+    it 'places the mark at position 1 and returns true' do
+      expect(board.place(:something, 1)).to eq(:something)
+      expect(board[1]).to eq(:something)
+    end
+
+    it 'does not place the mark if taken and returns false' do
+      board.place(:something, 1)
+      expect(board.place(:something_else, 1)).to be_nil
+      expect(board[1]).to eq(:something)
+    end
+  end
+
   context '#empty?' do
     it 'returns true when the board is empty' do
       expect(board.empty?).to eq(true)
     end
 
     it 'returns false when the board is not empty' do
-      board.push('something')
+      board.place('something', 0)
       expect(board.empty?).to eq(false)
     end
   end
@@ -28,23 +46,16 @@ describe Board do
 
   context '#[]' do
     it 'Gets the value of the given spot' do
-      board.push('X')
+      board.place('X', 0)
       expect(board[0]).to eq('X')
-    end
-  end
-
-  context '#[]=' do
-    it 'Sets the value of the spot we give it.' do
-      board[3] = 'X'
-      expect(board[3]).to eq('X')
     end
   end
 
   context '#lines' do
     it 'returns all the lines for a given board' do
-      board[0] = 'X'
-      board[3] = 'X'
-      board[4] = 'O'
+      board.place('X', 0)
+      board.place('X', 3)
+      board.place('O', 4)
       expect(board.lines).to eq(
         [
           {0 => 'X', 1 => nil, 2 => nil},

@@ -21,20 +21,16 @@ class Board
     board.empty?
   end
 
-  def push(item)
-    board.push(item)
+  def place(item, position)
+    board[position] = item if board[position].nil?
   end
 
   def full?
     board.size >= BOARD_SIZE
   end
 
-  def []=(spot, value)
-    board[spot] = value
-  end
-
   def [](spot)
-    return board[spot]
+    board[spot]
   end
 
   def lines
