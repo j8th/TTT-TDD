@@ -23,4 +23,12 @@ EOS
       expect { console.draw_board(board) }.to output(string).to_stdout
     end
   end
+
+  context '#prompt' do
+    it 'Gets an integer from the user.' do
+      allow(STDIN).to receive(:gets) { "2\n" }
+
+      expect(console.prompt).to eq(2)
+    end
+  end
 end

@@ -19,4 +19,9 @@ class Console
 EOS
     puts string
   end
+
+  def prompt
+    STDIN.gets.to_i
+  end
+
 end
