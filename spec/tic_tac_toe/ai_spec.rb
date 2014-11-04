@@ -18,8 +18,12 @@ describe 'AI' do
       expect(board.empty?).to eq(false)
     end
 
-    xit 'Given a board instance, it blocks a win for the opposing player.' do
-      #Tab to here
+    it 'Given a board instance, it blocks a win for the opposing player.' do
+      board.place(:O, 0)
+      board.place(:O, 1)
+      ai.move(board)
+
+      expect(board[2]).to eq(:X)
     end
   end
 end

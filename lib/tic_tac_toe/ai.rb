@@ -7,7 +7,7 @@ class AI
   end
 
   def move(board)
-    board.place(token, 0)
+    board.place(token, 2)
   end
 
 end
