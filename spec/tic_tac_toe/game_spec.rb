@@ -8,6 +8,33 @@ describe Game do
     it 'returns false for a game with a new board' do
       expect(game.game_over?).to eq(false)
     end
+
+    it 'returns true for a game with a winner' do
+      board.place(Game::PLAYER1_TOKEN, 0)
+      board.place(Game::PLAYER1_TOKEN, 1)
+      board.place(Game::PLAYER1_TOKEN, 2)
+
+      expect(game.game_over?).to eq(true)
+    end
+
+    it 'returns true for a draw game' do
+      # X O X
+      # X O O
+      # O X X
+      board.place(Game::PLAYER1_TOKEN, 0)
+      board.place(Game::PLAYER2_TOKEN, 1)
+      board.place(Game::PLAYER1_TOKEN, 2)
+
+      board.place(Game::PLAYER1_TOKEN, 3)
+      board.place(Game::PLAYER2_TOKEN, 4)
+      board.place(Game::PLAYER2_TOKEN, 5)
+
+      board.place(Game::PLAYER2_TOKEN, 6)
+      board.place(Game::PLAYER1_TOKEN, 7)
+      board.place(Game::PLAYER1_TOKEN, 8)
+
+      expect(game.game_over?).to eq(true)
+    end
   end
 
   context '#winner' do

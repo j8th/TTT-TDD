@@ -8,6 +8,7 @@ class Game
   end
 
   def game_over?
+    return true if @board.full? or not winner.nil?
     false
   end
 
