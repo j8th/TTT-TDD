@@ -43,6 +43,12 @@ class AI
     board.place(token, open_spots.first)
   end
 
+  def evaluate_board(board)
+    enemy_token = discover_enemy_token(board)
+    game = Game.new(board, AI.new(token), AI.new(enemy_token))
+    return 1 if game.winner == token
+  end
+
   private
   # TODO:  Messy, reconsider this later.
   # Determine the enemy token.

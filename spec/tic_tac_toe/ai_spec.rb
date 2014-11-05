@@ -73,4 +73,13 @@ describe 'AI' do
       expect(board[8]).to eq(ai1.token)
     end
   end
+
+  context '#evaluate_board' do
+    it 'returns 1 for a board the AI wins' do
+      board.place(ai1.token, 0)
+      board.place(ai1.token, 1)
+      board.place(ai1.token, 2)
+      expect(ai1.evaluate_board(board)).to eq(1)
+    end
+  end
 end
