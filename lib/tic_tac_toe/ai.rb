@@ -11,16 +11,7 @@ class AI
   def move(board)
     return nil if board.full?
 
-    # Determine the enemy token.
-    # Anything we find on the board that is not our token is considered the 'enemy_token'
-    # We assume there is only one enemy token.
-    enemy_token = nil
-    (0..Board::BOARD_SIZE-1).each do |i|
-      enemy_token = board[i] if board[i] != token and board[i] != nil
-    end
-    if enemy_token.nil?
-      enemy_token = token == :X ? :O : :X
-    end
+    enemy_token = discover_enemy_token(board)
 
     # Grab all the open spots on the board.
     open_spots = Array.new
@@ -50,6 +41,24 @@ class AI
     end
 
     board.place(token, open_spots.first)
+  end
+
+  private
+  # TODO:  Messy, reconsider this later.
+  # Determine the enemy token.
+  # Anything we find on the board that is not our token is considered the 'enemy_token'
+  # We assume there is only one enemy token.
+  # If we do not find any enemy tokens on the board, we assume the enemy token to be 'O',
+  #   or we assume it to be 'X' if our own token is 'O'.
+  def discover_enemy_token(board)
+    enemy_token = nil
+    (0..Board::BOARD_SIZE-1).each do |i|
+      enemy_token = board[i] if board[i] != token and board[i] != nil
+    end
+    if enemy_token.nil?
+      enemy_token = token == :X ? :O : :X
+    end
+    enemy_token
   end
 
 end
