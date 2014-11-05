@@ -2,7 +2,9 @@ require 'tic_tac_toe/game'
 
 describe Game do
   let(:board) { Board.new }
-  let(:game)  { Game.new(board) }
+  let(:player1) { AI.new(:X) }
+  let(:player2) { AI.new(:O) }
+  let(:game)  { Game.new(board, player1, player2) }
 
   context '#game_over?' do
     it 'returns false for a game with a new board' do
@@ -63,5 +65,11 @@ describe Game do
     end
   end
 
+  context '#turn' do
+    it 'makes a player move on the board' do
+      game.turn()
+      expect(board.empty?).to eq(false)
+    end
+  end
 
 end

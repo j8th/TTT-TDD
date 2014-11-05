@@ -3,8 +3,10 @@ class Game
   PLAYER1_TOKEN = :X
   PLAYER2_TOKEN = :O
 
-  def initialize(board)
+  def initialize(board, player1, player2)
     @board = board
+    @player1 = player1
+    @player2 = player2
   end
 
   def game_over?
@@ -19,4 +21,9 @@ class Game
     end
     nil
   end
+
+  def turn
+    @player1.move(@board)
+  end
+
 end
