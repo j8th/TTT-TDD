@@ -42,6 +42,11 @@ describe Board do
       fill_board
       expect(board.full?).to eq(true)
     end
+
+    it 'does NOT return true just because we fill the last spot on the board.  (it returns false)' do
+      board.place(:X, 8)
+      expect(board.full?).to eq(false)
+    end
   end
 
   context '#[]' do

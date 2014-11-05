@@ -14,11 +14,11 @@ class Board
   ]
 
   def initialize
-    @board = []
+    @board = Array.new(8)
   end
 
   def empty?
-    board.empty?
+    board.all? { |value| value.nil? }
   end
 
   def place(item, position)
@@ -26,7 +26,8 @@ class Board
   end
 
   def full?
-    board.size >= BOARD_SIZE
+    return false if board.include? nil
+    true
   end
 
   def [](spot)
