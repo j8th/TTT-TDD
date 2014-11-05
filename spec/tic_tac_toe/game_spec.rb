@@ -94,6 +94,13 @@ describe Game do
       expect(count_tokens(player1, board)).to eq(2)
       expect(count_tokens(player2, board)).to eq(2)
     end
+
+    # May be unnecessary, but very explicit?
+    it 'starts with player1' do
+      game.turn
+      expect(count_tokens(player1, board)).to eq(1)
+      expect(count_tokens(player2, board)).to eq(0)
+    end
   end
 
 end
