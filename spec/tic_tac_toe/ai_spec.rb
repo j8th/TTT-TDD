@@ -101,5 +101,14 @@ describe 'AI' do
       board.place(ai1.token, 8)
       expect(ai2.evaluate_board(board)).to eq(0)
     end
+
+    it 'returns nil for a game that is still in progress' do
+      board.place(ai1.token, 0)
+      expect(ai1.evaluate_board(board)).to be_nil
+    end
+
+    it 'returns nil for a new game with an empty board' do
+      expect(ai2.evaluate_board(board)).to be_nil
+    end
   end
 end
