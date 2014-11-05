@@ -103,4 +103,11 @@ describe Game do
     end
   end
 
+  context '#play' do
+    it 'takes turns until the game is over' do
+      game.play
+      expect(game.game_over?).to eq(true)
+    end
+  end
+
 end

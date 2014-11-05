@@ -26,4 +26,9 @@ class Game
     @playerup = @playerup == @player1 ? @player2 : @player1
   end
 
+  def play
+    turn
+    play unless game_over?
+  end
+
 end
