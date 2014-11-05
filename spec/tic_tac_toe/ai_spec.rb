@@ -1,5 +1,6 @@
 require 'tic_tac_toe/board'
 require 'tic_tac_toe/ai'
+require 'pry'
 
 describe 'AI' do
 
@@ -46,6 +47,21 @@ describe 'AI' do
       board.place(ai2.token, 4)
       ai1.move(board)
       expect(board[8]).to eq(ai1.token)
+    end
+
+    it 'takes a win for itself' do
+      board.place(ai1.token, 0)
+      board.place(ai1.token, 1)
+      board.place(ai2.token, 3)
+      ai1.move(board)
+      expect(board[2]).to eq(ai1.token)
+
+      board = Board.new
+      board.place(ai1.token, 4)
+      board.place(ai1.token, 3)
+      board.place(ai2.token, 6)
+      ai1.move(board)
+      expect(board[5]).to eq(ai1.token)
     end
   end
 end

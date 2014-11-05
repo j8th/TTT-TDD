@@ -28,7 +28,17 @@ class AI
       open_spots.push(i) if board[i].nil?
     end
 
-    
+
+    open_spots.each do |i|
+      board_copy = Marshal.load(Marshal.dump(board))
+      board_copy.place(token, i)
+      game = Game.new(board_copy, AI.new(token), AI.new(enemy_token))
+      if(game.winner == token)
+        board.place(token, i)
+        return
+      end
+    end
+
     open_spots.each do |i|
       board_copy = Marshal.load(Marshal.dump(board))
       board_copy.place(enemy_token, i)
@@ -38,6 +48,7 @@ class AI
         return
       end
     end
+
     board.place(token, open_spots.first)
   end
 
