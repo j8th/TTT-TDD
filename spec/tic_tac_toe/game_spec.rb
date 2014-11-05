@@ -1,5 +1,13 @@
 require 'tic_tac_toe/game'
 
+def count_tokens(player, board)
+  tokens = []
+  (0..Board::BOARD_SIZE).each do |i|
+    tokens.push(board[i]) if board[i] == player.token
+  end
+  tokens.count
+end
+
 describe Game do
   let(:board) { Board.new }
   let(:player1) { AI.new(:X) }
@@ -67,8 +75,24 @@ describe Game do
 
   context '#turn' do
     it 'makes a player move on the board' do
-      game.turn()
+      game.turn
       expect(board.empty?).to eq(false)
+    end
+
+    it 'alternates players across invocations' do
+      game.turn
+      expect(count_tokens(player1, board)).to eq(1)
+
+      game.turn
+      expect(count_tokens(player2, board)).to eq(1)
+
+      game.turn
+      expect(count_tokens(player1, board)).to eq(2)
+      expect(count_tokens(player2, board)).to eq(1)
+
+      game.turn
+      expect(count_tokens(player1, board)).to eq(2)
+      expect(count_tokens(player2, board)).to eq(2)
     end
   end
 

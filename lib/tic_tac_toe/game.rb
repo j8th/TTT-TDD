@@ -4,6 +4,8 @@ class Game
     @board = board
     @player1 = player1
     @player2 = player2
+
+    @playerup = @player1
   end
 
   def game_over?
@@ -20,7 +22,8 @@ class Game
   end
 
   def turn
-    @player1.move(@board)
+    @playerup.move(@board)
+    @playerup = @playerup == @player1 ? @player2 : @player1
   end
 
 end
