@@ -88,5 +88,18 @@ describe 'AI' do
       board.place(ai1.token, 2)
       expect(ai2.evaluate_board(board)).to eq(-1)
     end
+
+    it 'returns 0 for a draw game' do
+      board.place(ai1.token, 0)
+      board.place(ai2.token, 4)
+      board.place(ai1.token, 2)
+      board.place(ai2.token, 1)
+      board.place(ai1.token, 7)
+      board.place(ai2.token, 6)
+      board.place(ai1.token, 3)
+      board.place(ai2.token, 5)
+      board.place(ai1.token, 8)
+      expect(ai2.evaluate_board(board)).to eq(0)
+    end
   end
 end
