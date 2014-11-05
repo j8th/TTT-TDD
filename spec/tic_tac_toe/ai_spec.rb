@@ -1,3 +1,4 @@
+require 'tic_tac_toe/board'
 require 'tic_tac_toe/ai'
 
 describe 'AI' do
@@ -34,17 +35,17 @@ describe 'AI' do
       expect(tokens.count).to eq(4)
     end
 
-    xit 'blocks a win for the opposing player.' do
-      board.place(:O, 0)
-      board.place(:O, 1)
-      ai1.move(board)
-      expect(board[2]).to eq(:X)
+    it 'blocks a win for the opposing player.' do
+      board.place(ai1.token, 0)
+      board.place(ai1.token, 1)
+      ai2.move(board)
+      expect(board[2]).to eq(ai2.token)
 
       board = Board.new
-      board.place(:O, 0)
-      board.place(:O, 4)
+      board.place(ai2.token, 0)
+      board.place(ai2.token, 4)
       ai1.move(board)
-      expect(board[8]).to eq(:X)
+      expect(board[8]).to eq(ai1.token)
     end
   end
 end
