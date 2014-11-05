@@ -12,9 +12,9 @@ describe Game do
     end
 
     it 'returns true for a game with a winner' do
-      board.place(Game::PLAYER1_TOKEN, 0)
-      board.place(Game::PLAYER1_TOKEN, 1)
-      board.place(Game::PLAYER1_TOKEN, 2)
+      board.place(player1.token, 0)
+      board.place(player1.token, 1)
+      board.place(player1.token, 2)
 
       expect(game.game_over?).to eq(true)
     end
@@ -23,17 +23,17 @@ describe Game do
       # X O X
       # X O O
       # O X X
-      board.place(Game::PLAYER1_TOKEN, 0)
-      board.place(Game::PLAYER2_TOKEN, 1)
-      board.place(Game::PLAYER1_TOKEN, 2)
+      board.place(player1.token, 0)
+      board.place(player2.token, 1)
+      board.place(player1.token, 2)
 
-      board.place(Game::PLAYER1_TOKEN, 3)
-      board.place(Game::PLAYER2_TOKEN, 4)
-      board.place(Game::PLAYER2_TOKEN, 5)
+      board.place(player1.token, 3)
+      board.place(player2.token, 4)
+      board.place(player2.token, 5)
 
-      board.place(Game::PLAYER2_TOKEN, 6)
-      board.place(Game::PLAYER1_TOKEN, 7)
-      board.place(Game::PLAYER1_TOKEN, 8)
+      board.place(player2.token, 6)
+      board.place(player1.token, 7)
+      board.place(player1.token, 8)
 
       expect(game.game_over?).to eq(true)
     end

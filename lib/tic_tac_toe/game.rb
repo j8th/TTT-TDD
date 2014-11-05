@@ -1,8 +1,5 @@
 class Game
 
-  PLAYER1_TOKEN = :X
-  PLAYER2_TOKEN = :O
-
   def initialize(board, player1, player2)
     @board = board
     @player1 = player1
@@ -16,8 +13,8 @@ class Game
 
   def winner
     @board.lines.each do |line|
-      return PLAYER1_TOKEN if line.values.all? { |v| v == PLAYER1_TOKEN }
-      return PLAYER2_TOKEN if line.values.all? { |v| v == PLAYER2_TOKEN }
+      return @player1.token if line.values.all? { |v| v == @player1.token }
+      return @player2.token if line.values.all? { |v| v == @player2.token }
     end
     nil
   end
