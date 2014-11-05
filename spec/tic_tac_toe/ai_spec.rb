@@ -63,5 +63,14 @@ describe 'AI' do
       ai1.move(board)
       expect(board[5]).to eq(ai1.token)
     end
+
+    it 'takes a win before it takes a block' do
+      board.place(ai1.token, 2)
+      board.place(ai1.token, 5)
+      board.place(ai2.token, 1)
+      board.place(ai2.token, 4)
+      ai1.move(board)
+      expect(board[8]).to eq(ai1.token)
+    end
   end
 end
