@@ -138,7 +138,7 @@ describe 'AI' do
     end
   end
 
-  context 'Comprehensive AI Testing.  (AI vs AI)' do
+  context 'Comprehensive AI Testing.  (AI vs AI)', :slow => true do
     it 'never loses.  This means that the result of every game between two AI\'s is a draw.' do
       1000.times do
         board = Board.new
