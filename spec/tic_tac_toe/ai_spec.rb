@@ -137,4 +137,18 @@ describe 'AI' do
       expect(ai2.evaluate_board(board)).to be_nil
     end
   end
+
+  context 'Comprehensive AI Testing.  (AI vs AI)' do
+    it 'never loses.  This means that the result of every game between two AI\'s is a draw.' do
+      1000.times do
+        board = Board.new
+        ai1 = AI.new(:X)
+        ai2 = AI.new(:O)
+        game = Game.new(board, ai1, ai2)
+        game.play
+        expect(game.winner).to be_nil
+        expect(game.game_over?).to eq(true)
+      end
+    end
+  end
 end
