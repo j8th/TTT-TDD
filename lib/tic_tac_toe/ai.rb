@@ -13,27 +13,31 @@ class AI
 
     enemy_token = discover_enemy_token(board)
     open_spots = get_open_spots(board)
-
+    games = Hash.new
 
     open_spots.each do |i|
       board_copy = Marshal.load(Marshal.dump(board))
       board_copy.place(token, i)
-      if evaluate_board(board_copy) == 1
+      game = Game.new(board_copy, AI.new(enemy_token), AI.new(token))
+      if game.winner == token
         board.place(token, i)
         return
       end
+      games[i] = game
     end
 
-    open_spots.each do |i|
-      board_copy = Marshal.load(Marshal.dump(board))
-      board_copy.place(enemy_token, i)
-      if evaluate_board(board_copy) == -1
-        board.place(token, i)
-        return
-      end
+    scores = Hash.new
+
+    games.each do |i, game|
+      game.play
+      scores[i] = 1 if game.winner == token
+      scores[i] = -1 if game.winner == enemy_token
+      scores[i] = 0 if game.winner.nil? and game.game_over?
     end
 
-    board.place(token, open_spots.first)
+    max = scores.max_by { |k, v| v }
+    spot = max[0]
+    board.place(token, spot)
   end
 
   def evaluate_board(board)
