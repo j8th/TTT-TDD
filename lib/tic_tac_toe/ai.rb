@@ -12,12 +12,7 @@ class AI
     return nil if board.full?
 
     enemy_token = discover_enemy_token(board)
-
-    # Grab all the open spots on the board.
-    open_spots = Array.new
-    (0..Board::BOARD_SIZE-1).each do |i|
-      open_spots.push(i) if board[i].nil?
-    end
+    open_spots = get_open_spots(board)
 
 
     open_spots.each do |i|
@@ -65,6 +60,14 @@ class AI
       enemy_token = token == :X ? :O : :X
     end
     enemy_token
+  end
+
+  def get_open_spots(board)
+    open_spots = Array.new
+    (0..Board::BOARD_SIZE-1).each do |i|
+      open_spots.push(i) if board[i].nil?
+    end
+    open_spots
   end
 
 end
