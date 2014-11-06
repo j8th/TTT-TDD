@@ -11,8 +11,32 @@ class AI
   def move(board)
     return nil if board.full?
 
-    enemy_token = discover_enemy_token(board)
+    # ####### Speed Hacks #######
+    # Hacks to speed up minimax by bypassing most of the possible games.
+    # The return statements here are important.  We make a move, then
+    # bail out so that we don't end up analyzing all the possible games further down.
+    # TODO:  See if there is a craftier, less hackish way to speed things up.
+
+    # If the board is empty, always take the middle.
+    if board.empty?
+      board.place(token, 0)
+      return
+    end
+
     open_spots = get_open_spots(board)
+    # If there is one spot taken, then always take the middle.
+    # Unless the middle is taken already, then take the corner.
+    if open_spots.count == Board::BOARD_SIZE-1
+      spot = board[4].nil? ? 4 : 0
+      board.place(token, spot)
+      return
+    end
+    # ###### End Hacks ########
+
+
+    enemy_token = discover_enemy_token(board)
+    # Better here, but we do it above for our speed hacks.
+    #open_spots = get_open_spots(board)
     games = Hash.new
 
     open_spots.each do |i|
