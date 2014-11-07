@@ -1,6 +1,5 @@
 require 'tic_tac_toe/board'
 require 'tic_tac_toe/ai'
-require 'pry'
 
 describe 'AI' do
 
