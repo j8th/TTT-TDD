@@ -6,6 +6,7 @@ class Human
 
   def move(board)
     @ui.draw_board(board)
-    @ui.prompt
+    spot = @ui.prompt
+    board.place(@token, spot)
   end
 end

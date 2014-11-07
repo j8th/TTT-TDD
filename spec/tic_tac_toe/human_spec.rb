@@ -5,7 +5,7 @@ describe 'Human' do
   let(:board)   { Board.new }
   let(:console) { instance_double('Console', {
     :draw_board => '',
-    :prompt => ''
+    :prompt => 4
     }) }
   let(:human)   { Human.new(:X, console) }
 
@@ -18,6 +18,11 @@ describe 'Human' do
     it 'Takes an input from the user.' do
       expect(console).to receive(:prompt)
       human.move(board)
+    end
+
+    it 'Makes a move on the board' do
+      human.move(board)
+      expect(board.empty?).to eq(false)
     end
   end
 end
