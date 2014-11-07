@@ -1,4 +1,5 @@
 require 'tic_tac_toe/human'
+require 'tic_tac_toe/board'
 
 describe 'Human' do
 
