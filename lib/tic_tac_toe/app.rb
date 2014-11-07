@@ -5,14 +5,15 @@ require 'tic_tac_toe/console'
 require 'tic_tac_toe/game'
 
 class App
-  
-  attr_reader :human, :ai, :board, :game
 
-  def initialize
-    @human = Human.new(:O, Console.new)
-    @ai = AI.new(:X)
-    @board = Board.new
-    @game = Game.new(@board, @ai, @human)
+  attr_accessor :game
+
+  def initialize(player1, player2, console)
+    @player1 = player1
+    @player2 = player2
+    @console = console
+
+    @game = Game.new(Board.new, @player1, @player2)
   end
 
   def run
