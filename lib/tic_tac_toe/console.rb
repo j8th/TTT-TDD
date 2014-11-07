@@ -24,4 +24,8 @@ EOS
     STDIN.gets.to_i
   end
 
+  def msg(text)
+    puts text
+  end
+
 end

@@ -31,4 +31,11 @@ EOS
       expect(console.prompt).to eq(2)
     end
   end
+
+  context '#msg' do
+    it 'prints a text message to stdout' do
+      expect(STDOUT).to receive(:puts).with('Some message')
+      console.msg('Some message')
+    end
+  end
 end
