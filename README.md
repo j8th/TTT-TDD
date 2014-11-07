@@ -6,4 +6,4 @@
 
 ## Running the specs
 
-`$ bundle exec rspec`
+`$ bundle exec rake`
