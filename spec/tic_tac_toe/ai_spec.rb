@@ -99,45 +99,6 @@ describe 'AI' do
   end
 
 
-
-  context '#evaluate_board' do
-    it 'returns 1 for a board the AI wins' do
-      board.place(ai1.token, 0)
-      board.place(ai1.token, 1)
-      board.place(ai1.token, 2)
-      expect(ai1.evaluate_board(board)).to eq(1)
-    end
-
-    it 'returns -1 for a board the AI loses' do
-      board.place(ai1.token, 0)
-      board.place(ai1.token, 1)
-      board.place(ai1.token, 2)
-      expect(ai2.evaluate_board(board)).to eq(-1)
-    end
-
-    it 'returns 0 for a draw game' do
-      board.place(ai1.token, 0)
-      board.place(ai2.token, 4)
-      board.place(ai1.token, 2)
-      board.place(ai2.token, 1)
-      board.place(ai1.token, 7)
-      board.place(ai2.token, 6)
-      board.place(ai1.token, 3)
-      board.place(ai2.token, 5)
-      board.place(ai1.token, 8)
-      expect(ai2.evaluate_board(board)).to eq(0)
-    end
-
-    it 'returns nil for a game that is still in progress' do
-      board.place(ai1.token, 0)
-      expect(ai1.evaluate_board(board)).to be_nil
-    end
-
-    it 'returns nil for a new game with an empty board' do
-      expect(ai2.evaluate_board(board)).to be_nil
-    end
-  end
-
   context 'Comprehensive AI Testing.  (AI vs AI)', :slow => true do
     it 'never loses.  This means that the result of every game between two AI\'s is a draw.' do
       1000.times do
