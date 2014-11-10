@@ -46,6 +46,16 @@ class Board
     array
   end
 
+  def set_board(array)
+    @board = array
+  end
+
+  def create_copy
+    copy = Board.new
+    copy.set_board(@board.dup)
+    copy
+  end
+
   private
   attr_accessor :board
 end

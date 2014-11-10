@@ -40,7 +40,7 @@ class AI
     games = Hash.new
 
     open_spots.each do |i|
-      board_copy = Marshal.load(Marshal.dump(board))
+      board_copy = board.create_copy
       board_copy.place(token, i)
       game = Game.new(board_copy, AI.new(enemy_token), AI.new(token))
       if game.winner == token
