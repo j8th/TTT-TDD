@@ -20,7 +20,8 @@ EOS
     puts string
   end
 
-  def prompt
+  def prompt_for_move
+    puts 'Please enter the number where you would like to move.'
     STDIN.gets.to_i
   end
 

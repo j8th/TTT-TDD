@@ -1,4 +1,5 @@
 require 'tic_tac_toe/console'
+require 'tic_tac_toe/board'
 
 describe 'Console' do
 
@@ -24,11 +25,12 @@ EOS
     end
   end
 
-  context '#prompt' do
-    it 'Gets an integer from the user.' do
+  context '#prompt_for_move' do
+    it 'Ask the user to make a move and returns the selection.' do
+      expect(STDOUT).to receive(:puts).with('Please enter the number where you would like to move.')
       allow(STDIN).to receive(:gets) { "2\n" }
 
-      expect(console.prompt).to eq(2)
+      expect(console.prompt_for_move).to eq(2)
     end
   end
 
