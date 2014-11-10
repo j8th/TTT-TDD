@@ -1,5 +1,3 @@
-require 'tic_tac_toe/game'
-
 class AI
 
   attr_reader :token
